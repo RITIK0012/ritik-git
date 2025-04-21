@@ -29,7 +29,7 @@ jobs:
       - name: Deploy Application
         run: |
           ssh ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} << 'EOF'
-            cd /home/ubuntu/simple-gin-app
+            cd /home/ubuntu/ritik-git
             pkill -f ./myapp
             git pull origin main
             go build -o myapp main.go
