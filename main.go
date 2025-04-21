@@ -16,6 +16,7 @@ func PingHandler(c *gin.Context) {
 		"message": "pong",
 	})
 }
+//////
 
 // custom types in golang
 func main() {
