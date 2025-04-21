@@ -8,6 +8,8 @@ import (
 	"session20-gin-app/middlewares"
 )
 
+// go build -o myapp main.go
+// nohup ./myapp > myapp.log 2>&1 &
 func PingHandler(c *gin.Context) {
 	c.JSON(http.StatusOK, gin.H{
 		"message": "pong",
@@ -19,7 +21,7 @@ func main() {
 
 	r := gin.Default() // default router for gin
 
-	r.GET("/ping", PingHandler)
+	r.GET("/status", PingHandler)
 
 	// We will create crud route
 	users := make([]handlers.User, 0)
@@ -33,7 +35,7 @@ func main() {
 	crudRoutes.GET("/get/:id", crudHandler.GetById)
 	crudRoutes.PUT("/update/:id", crudHandler.Update)
 
-	err := r.Run("localhost:8090")
+	err := r.Run("0.0.0.0:8090")
 	if err != nil {
 		log.Println("Error starting the gin server")
 		return
